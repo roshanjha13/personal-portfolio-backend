@@ -1,11 +1,18 @@
-const express = require('express')
-const dotenv = require('dotenv').config()
-const dbConfig = require('./config/dbConfig')
+const express = require("express");
+const dotenv = require("dotenv").config();
+const dbConfig = require("./config/dbConfig");
 
-const app = express()
+const app = express();
 
-const  port = process.env.PORT;
+app.use(express.json());
+app.use(express.urlencoded({ extended: true }));
 
-app.listen(port,()=>{
-    console.log(`Server is running on ${port}`);
-})
+const router = require("./route/portfolioRoute");
+
+app.use("/api", router);
+
+const port = process.env.PORT;
+
+app.listen(port, () => {
+  console.log(`Server is running on ${port}`);
+});

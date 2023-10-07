@@ -78,71 +78,71 @@ const projectsSchema = new mongoose.Schema({
     type: String,
     required: true,
   },
-  link:{
-    type:String,
-    required:true
+  link: {
+    type: String,
+    required: true,
   },
-  technolgies:{
-    type:Array,
-    required:true
-  }
+  technolgies: {
+    type: Array,
+    required: true,
+  },
 });
 
 const educationSchema = new mongoose.Schema({
-    title:{
-        type:String,
-        required:true
-    },
-    description:{
-        type:String,
-        required:true
-    },
-    image:{
-        type:String,
-        required:true
-    },
-    passingYear:{
-        type:String,
-        required:true
-    },
-    cgpa:{
-        type:String,
-        required:true
-    }
-})
+  title: {
+    type: String,
+    required: true,
+  },
+  description: {
+    type: String,
+    required: true,
+  },
+  image: {
+    type: String,
+    required: true,
+  },
+  passingYear: {
+    type: String,
+    required: true,
+  },
+  cgpa: {
+    type: String,
+    required: true,
+  },
+});
 
 const contactSchema = new mongoose.Schema({
-    name:{
-        type:String,
-        required:true
-    },
-    gender:{
-        type:String,
-        required:true
-    },
-    email:{
-        type:String,
-        required:true
-    },
-    mobile:{
-        type:String,
-        required:true
-    },
-    age:{
-        type:String,
-        required:true
-    },
-    country:{
-        type:String,
-        required:true
-    },
-})
+  name: {
+    type: String,
+    required: true,
+  },
+  gender: {
+    type: String,
+    required: true,
+  },
+  email: {
+    type: String,
+    required: true,
+  },
+  mobile: {
+    type: String,
+    required: true,
+  },
+  age: {
+    type: String,
+    required: true,
+  },
+  country: {
+    type: String,
+    required: true,
+  },
+});
 
 module.exports = {
-    Intro: mongoose.model('intros',introSchema),
-    About: mongoose.model('abouts',aboutSchema),
-    Experience: mongoose.model('experiences',experienceSchema),
-    Projects: mongoose.model('projects',projectsSchema),
-    contact: mongoose.model('contacts',contactSchema),
-    education: mongoose.model('educations',educationSchema),
-}
+  Intro: mongoose.model("intros", introSchema),
+  About: mongoose.model("abouts", aboutSchema),
+  Experience: mongoose.model("experiences", experienceSchema),
+  Projects: mongoose.model("projects", projectsSchema),
+  Contact: mongoose.model("contacts", contactSchema),
+  Education: mongoose.model("educations", educationSchema),
+};
