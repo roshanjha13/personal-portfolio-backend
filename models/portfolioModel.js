@@ -109,6 +109,10 @@ const educationSchema = new mongoose.Schema({
     type: String,
     required: true,
   },
+  link:{
+    type:String,
+    required:true
+  }
 });
 
 const contactSchema = new mongoose.Schema({
