@@ -9,12 +9,12 @@ const {
 
 exports.getPortFolio = async (req, res) => {
   try {
-    const intros = await Intro.find();
-    const abouts = await About.find();
-    const contacts = await Contact.find();
-    const projects = await Projects.find();
-    const experiences = await Experience.find();
-    const educations = await Education.find();
+    const intros = await Intro.find().lean();
+    const abouts = await About.find().lean();
+    const contacts = await Contact.find().lean();
+    const projects = await Projects.find().lean();
+    const experiences = await Experience.find().lean();
+    const educations = await Education.find().lean();
 
     res.status(200).json({
       intro: intros[0],
