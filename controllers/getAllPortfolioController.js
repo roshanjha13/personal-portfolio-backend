@@ -47,6 +47,7 @@ exports.getPortFolio = async (req, res) => {
     res.status(500).send(error);
   }
 };
+
 //update intro
  exports.updateAbout = async (req, res) => {
   try {
@@ -64,3 +65,20 @@ exports.getPortFolio = async (req, res) => {
     res.status(500).send(error);
   }
 };
+
+// add-experience
+
+exports.addExperience = async(req,res)=>{
+  try {
+    const experience = new Experience(req.body);
+    await experience.save();
+
+    res.status(201).send({
+      data:experience,
+      success:true,
+      message:"Experience added Successfully",
+    })
+  } catch (error) {
+    res.status(500).send(error)
+  }
+}
