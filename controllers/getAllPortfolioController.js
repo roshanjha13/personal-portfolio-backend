@@ -128,9 +128,97 @@ exports.updateContact = async (req, res) => {
       { new: true }
     );
     res.status(201).send({
-      data:contact,
+      data: contact,
+      success: true,
+      message: "Contact section updated successfully",
+    });
+  } catch (error) {
+    res.status(500).send(error);
+  }
+};
+
+exports.addProject = async (req, res) => {
+  try {
+    const project = new Projects(req.body);
+    await project.save()
+      res.status(200).send({
+        data: project,
+        success: true,
+        message: "Project Added Successfully",
+      })
+  } catch (error) {
+    res.status(500).send(error);
+  }
+};
+
+exports.updateProject = async (req, res) => {
+  try {
+    const project = await Projects.findOneAndUpdate(
+      { _id: req.body._id },
+      req.body,
+      { new: true }
+    );
+    res.status(200).send({
+      data:project,
       success:true,
-      message:"Contact section updated successfully"
+      message:"Project updated Successfully"
+    })
+  } catch (error) {
+    res.status(500).send(error)
+  }
+};
+
+exports.deleteProject = async (req, res) => {
+  try {
+    const project = await Projects.findOneAndDelete({_id:req.body._id})
+    res.status(200).send({
+      data:project,
+      success:true,
+      message:"Project deleted successfully"
+    })
+  } catch (error) {
+    res.status(500).send(error)
+  }
+};
+
+exports.addEducation = async (req, res) => {
+  try {
+    const education = new Education(req.body);
+    await education.save()
+      res.status(200).send({
+        data: education,
+        success: true,
+        message: "Education Added Successfully",
+      })
+  } catch (error) {
+    res.status(500).send(error);
+  }
+};
+
+exports.updateEducation = async (req, res) => {
+  try {
+    const education = await Education.findOneAndUpdate(
+      { _id: req.body._id },
+      req.body,
+      { new: true }
+    );
+    res.status(200).send({
+      data:education,
+      success:true,
+      message:"Education updated Successfully"
+    })
+  } catch (error) {
+    res.status(500).send(error)
+  }
+};
+
+exports.deleteEducation = async (req, res) => {
+  try {
+    const education = await Education.findOneAndDelete({_id:req.body._id})
+    res.status(200).send({
+      data:education,
+      success:true,
+      message:"Education deleted successfully"
     })
   } catch (error) {
     res.status(500).send(error)

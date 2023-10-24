@@ -7,6 +7,12 @@ const {
   updateExperience,
   deleteExperience,
   updateContact,
+  addProject,
+  updateProject,
+  deleteProject,
+  updateEducation,
+  addEducation,
+  deleteEducation,
 } = require("../controllers/getAllPortfolioController");
 
 const router = express.Router();
@@ -22,5 +28,13 @@ router.route("/update-contact").put(updateContact);
 router.route("/update-experience").put(updateExperience);
 router.route("/add-experience").post(addExperience);
 router.route("/delete-experience").post(deleteExperience);
+
+router.route("/update-project").put(updateProject);
+router.route("/add-project").post(addProject);
+router.route("/delete-project").post(deleteProject);
+
+router.route("/update-education").put(updateEducation);
+router.route("/add-education").post(addEducation);
+router.route("/delete-education").post(deleteEducation);
 
 module.exports = router;
