@@ -9,8 +9,8 @@ router.route('/update-intro').put(updateIntro)
 
 router.route('/update-about').put(updateAbout)
 
-router.route('/add-experience').post(addExperience)
 router.route('/update-experience').put(updateExperience)
-router.route('/delete-experience').delete(deleteExperience)
+router.route('/add-experience').post(addExperience)
+router.route('/delete-experience').post(deleteExperience)
 
 module.exports = router;

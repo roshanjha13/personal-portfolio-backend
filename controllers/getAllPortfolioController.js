@@ -88,7 +88,7 @@ exports.updateExperience = async (req, res) => {
   try {
     const experience = await Experience.findOneAndUpdate(
       {
-        _id: req.body.id,
+        _id: req.body._id,
       },
       req.body,
       { new: true }
@@ -106,8 +106,8 @@ exports.updateExperience = async (req, res) => {
 
 exports.deleteExperience = async(req,res)=>{
   try {
-    const experience = await Experience.findOneAndDelete({
-      _id:req.body.id
+    const experience = await Experience.findOneAndRemove({
+      _id:req.body._id
     })
     res.status(200).send({
       data:experience,
