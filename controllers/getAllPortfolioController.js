@@ -31,7 +31,7 @@ exports.getPortFolio = async (req, res) => {
 };
 
 //update intro
- exports.updateIntro = async (req, res) => {
+exports.updateIntro = async (req, res) => {
   try {
     const intro = await Intro.findOneAndUpdate(
       { _id: req.body._id },
@@ -49,7 +49,7 @@ exports.getPortFolio = async (req, res) => {
 };
 
 //update intro
- exports.updateAbout = async (req, res) => {
+exports.updateAbout = async (req, res) => {
   try {
     const about = await About.findOneAndUpdate(
       { _id: req.body._id },
@@ -68,15 +68,51 @@ exports.getPortFolio = async (req, res) => {
 
 // add-experience
 
-exports.addExperience = async(req,res)=>{
+exports.addExperience = async (req, res) => {
   try {
     const experience = new Experience(req.body);
     await experience.save();
 
     res.status(201).send({
+      data: experience,
+      success: true,
+      message: "Experience added Successfully",
+    });
+  } catch (error) {
+    res.status(500).send(error);
+  }
+};
+
+//update-experience
+exports.updateExperience = async (req, res) => {
+  try {
+    const experience = await Experience.findOneAndUpdate(
+      {
+        _id: req.body.id,
+      },
+      req.body,
+      { new: true }
+    );
+    res.status(201).send({
+      data: experience,
+      success: true,
+      message: "Experience updated successfully",
+    });
+  } catch (error) {
+    res.status(500).json(error);
+  }
+};
+
+
+exports.deleteExperience = async(req,res)=>{
+  try {
+    const experience = await Experience.findOneAndDelete({
+      _id:req.body.id
+    })
+    res.status(200).send({
       data:experience,
       success:true,
-      message:"Experience added Successfully",
+      message:"Experience deleted successfully"
     })
   } catch (error) {
     res.status(500).send(error)
