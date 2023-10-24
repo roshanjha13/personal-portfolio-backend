@@ -103,18 +103,36 @@ exports.updateExperience = async (req, res) => {
   }
 };
 
-
-exports.deleteExperience = async(req,res)=>{
+exports.deleteExperience = async (req, res) => {
   try {
     const experience = await Experience.findOneAndRemove({
-      _id:req.body._id
-    })
+      _id: req.body._id,
+    });
     res.status(200).send({
-      data:experience,
+      data: experience,
+      success: true,
+      message: "Experience deleted successfully",
+    });
+  } catch (error) {
+    res.status(500).send(error);
+  }
+};
+
+exports.updateContact = async (req, res) => {
+  try {
+    const contact = await Contact.findByIdAndUpdate(
+      {
+        _id: req.body._id,
+      },
+      req.body,
+      { new: true }
+    );
+    res.status(201).send({
+      data:contact,
       success:true,
-      message:"Experience deleted successfully"
+      message:"Contact section updated successfully"
     })
   } catch (error) {
     res.status(500).send(error)
   }
-}
+};
