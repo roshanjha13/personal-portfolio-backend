@@ -14,6 +14,7 @@ const {
   addEducation,
   deleteEducation,
 } = require("../controllers/getAllPortfolioController");
+const { login } = require("../controllers/userController");
 
 const router = express.Router();
 
@@ -36,5 +37,7 @@ router.route("/delete-project").post(deleteProject);
 router.route("/update-education").put(updateEducation);
 router.route("/add-education").post(addEducation);
 router.route("/delete-education").post(deleteEducation);
+
+router.route('/admin-login').post(login)
 
 module.exports = router;
